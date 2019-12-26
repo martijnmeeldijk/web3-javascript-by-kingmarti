@@ -79,20 +79,20 @@
     function roseChange() {
         let roseNumber = roseInput.value;
         console.log(roseNumber);
-        if(roseNumber<=10 && roseNumber>=0 && Number.isSafeInteger(roseNumber)){
+        if(roseNumber<=10 && roseNumber>=0 && !Number.isSafeInteger(roseNumber)){
             roseLink.setAttribute("href" ,"Servlet?id=rose&number=" + roseNumber);
         }
     }
     
     function daisyChange() {
         let daisyNumber = daisyInput.value;
-        if(daisyNumber<=10 && daisyNumber>=0 && Number.isSafeInteger(daisyNumber)){
+        if(daisyNumber<=10 && daisyNumber>=0 && !Number.isSafeInteger(daisyNumber)){
             daisyLink.setAttribute("href" ,"Servlet?id=daisy&number=" + daisyNumber);
         }
     }
     function roseLinkClick(evt) {
         let roseNumber = roseInput.value;
-        if(roseNumber<=10 && roseNumber>=0 && Number.isSafeInteger(roseNumber)){
+        if(roseNumber<=10 && roseNumber>=0 && !Number.isSafeInteger(roseNumber)){
             roseLink.setAttribute("href" ,"Servlet?id=rose&number=" + roseNumber);
         }
         else{
@@ -103,7 +103,7 @@
     }
     function daisyLinkClick(evt) {
         let daisyNumber = daisyInput.value;
-        if(daisyNumber<=10 && daisyNumber>=0 && Number.isSafeInteger(daisyNumber)){
+        if(daisyNumber<=10 && daisyNumber>=0 && !Number.isSafeInteger(daisyNumber)){
             daisyLink.setAttribute("href" ,"Servlet?id=daisy&number=" + daisyNumber);
         }
         else{
