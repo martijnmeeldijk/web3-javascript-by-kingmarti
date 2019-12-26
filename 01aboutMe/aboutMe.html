@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About Me</title>
+</head>
+<body>
+<h1>About Me</h1>
+<ul>
+    <li>My name: <span id="name"></span></li>
+    <li>Hometown: <span id="hometown"></span></li>
+    <li>Date: <span id="date"></span></li>
+    <li>Time: <span id="time"></span></li>
+    <li>Sum of <span class="number">2</span> and <span class="number">3</span> is equal to <span id="sum"></span></li>
+</ul>
+
+
+</body>
+<script>
+    window.addEventListener("load",initPage,false);
+
+    function initPage(){
+        let d =  new Date();
+        document.getElementById("name").innerText = "Martijn";
+        document.getElementById("date").innerText = d.getDay() + "/" + d.getMonth() + "/" + d.getFullYear();
+        document.getElementById("time").innerText = d.getHours() + ":" + d.getMinutes()
+        var tblrows = document.getElementsByTagName('li');
+
+        for(let i=0; i < tblrows.length; i++){
+            if(i%2==1) tblrows[i].style.backgroundColor = '#AAAAAA';
+        }
+        let numb = document.getElementsByClassName("number")
+        for(let i of numb){
+            i.innerText = Math.round(Math.random()*100000);
+        }
+
+
+        let numbers = document.getElementsByClassName("number");
+        let som = 0;
+        for(let i of numbers){
+            som += parseInt(i.innerText);
+        }
+        document.getElementById("sum").innerText = som.toString();
+
+    }
+</script>
+</html>

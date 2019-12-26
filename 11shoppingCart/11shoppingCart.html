@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shopping Cart</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #000;
+            font-size: 1em;
+            font-family: droid-sans, sans-serif;
+        }
+
+        p {
+            margin: 1.5em 0.5em;
+            padding: 1em;
+            line-height: 1.5em;
+        }
+
+        div#container {
+            width: 90%;
+            margin: 10px auto;
+            background-color: #e6e6e6;
+            padding: 10px;
+            overflow: auto;
+        }
+        input:invalid {
+            border-color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <h1>Shopping Cart</h1>
+    <p>Write JS such that user input in number of products is added to link "add to cart".</p>
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Number</th>
+            <th>Add to cart</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr id="rose">
+            <td>Rose</td>
+            <td><input type="number" min="0" max="10" value="1" required></td>
+            <td><a href="Servlet?id=rose&number=1">Add to cart</a></td>
+        </tr>
+        <tr id="daisy">
+            <td>Daisy</td>
+            <td><input type="number" min="0" max="10" value="1" required></td>
+            <td><a href="Servlet?id=daisy&number=1">Add to cart</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script>
+    roseInput = document.querySelector("#rose > td:nth-child(2) > input[type=number]");
+    daisyInput = document.querySelector("#daisy > td:nth-child(2) > input[type=number]");
+
+    roseLink = document.querySelector("#rose > td:nth-child(3) > a");
+    daisyLink = document.querySelector("#daisy > td:nth-child(3) > a");
+
+    window.addEventListener("load", initPage, false);
+
+
+
+
+    function initPage() {
+        roseInput.addEventListener("change", roseChange, false);
+        daisyInput.addEventListener("change", daisyChange, false);
+
+
+        roseLink.addEventListener("click", roseLinkClick, false);
+        daisyLink.addEventListener("click", daisyLinkClick, false);
+
+    }
+    function roseChange() {
+        let roseNumber = roseInput.value;
+        console.log(roseNumber);
+        if(roseNumber<=10 && roseNumber>=0 && Number.isSafeInteger(roseNumber)){
+            roseLink.setAttribute("href" ,"Servlet?id=rose&number=" + roseNumber);
+        }
+    }
+    
+    function daisyChange() {
+        let daisyNumber = daisyInput.value;
+        if(daisyNumber<=10 && daisyNumber>=0 && Number.isSafeInteger(daisyNumber)){
+            daisyLink.setAttribute("href" ,"Servlet?id=daisy&number=" + daisyNumber);
+        }
+    }
+    function roseLinkClick(evt) {
+        let roseNumber = roseInput.value;
+        if(roseNumber<=10 && roseNumber>=0 && Number.isSafeInteger(roseNumber)){
+            roseLink.setAttribute("href" ,"Servlet?id=rose&number=" + roseNumber);
+        }
+        else{
+            alert(roseNumber + " is een beetje te veel, zo veel rozen hebben we niet man.");
+            evt.preventDefault();
+        }
+
+    }
+    function daisyLinkClick(evt) {
+        let daisyNumber = daisyInput.value;
+        if(daisyNumber<=10 && daisyNumber>=0 && Number.isSafeInteger(daisyNumber)){
+            daisyLink.setAttribute("href" ,"Servlet?id=daisy&number=" + daisyNumber);
+        }
+        else{
+            alert("Denk je echt dat we hier zomaar effe " + daisyNumber + " daisies hebben liggen. Ben je niet goed bij je harsens ofzo?");
+            evt.preventDefault();
+        }
+    }
+    
+
+   
+</script>
+</body>
+
+</html>
